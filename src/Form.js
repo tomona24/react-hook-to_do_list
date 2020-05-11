@@ -1,38 +1,95 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import styled from "styled-components";
 
+const UNDO = 0;
+const DONE = 1;
+
+const initialTask = {
+  title: null,
+  detail: null,
+  due: null,
+  categoly: null,
+  importance: null,
+  level: null,
+  status: UNDO,
+};
+
 const FormArea = (props) => {
+  const [newTask, setNewTask] = useState(initialTask);
+  const { addTaskList } = props;
+
+  const submitTask = () => {
+    addTaskList({newTask});
+    setNewTask(initialTask);
+  };
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    let oldTasks = newTask;
+    oldTasks[name] = value;
+    setNewTask(oldTasks)
+  }
+
+  const { categoly, title, detail, due, importance } = newTask;
   return (
     <Form>
       <form>
         <FormRow>
-          <label for="project">categoly: </label>
-          <input type="text" id="project" name="project"></input>
+          <label for="categoly">categoly: </label>
+          <input
+            type="text"
+            id="categoly"
+            name="categoly"
+            value={categoly}
+            onChange={handleChange}
+          ></input>
         </FormRow>
         <FormRow>
           <label for="title">Title: </label>
-          <input type="text" id="title" name="title"></input>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={title}
+            onChange={handleChange}
+          ></input>
         </FormRow>
         <FormRow>
           <label for="detail">Detail: </label>
-          <input type="text" id="detail" name="detail"></input>
+          <input
+            type="text"
+            id="detail"
+            name="detail"
+            value={detail}
+            onChange={handleChange}
+          ></input>
         </FormRow>
         <FormRow>
           <label for="due">Due: </label>
-          <input type="date" id="due" name="due"></input>
+          <input
+            type="date"
+            id="due"
+            name="due"
+            value={due}
+            onChange={handleChange}
+          ></input>
         </FormRow>
         <FormRow>
           <label for="importance">Importance: </label>
           <div>
             low
-            <input type="range" id="importance" name="importance" />
+            <input
+              type="range"
+              id="importance"
+              name="importance"
+              value={importance}
+              onChange={handleChange}
+            />
             heigh
           </div>
         </FormRow>
         <FormRow>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" onClick={submitTask} />
         </FormRow>
       </form>
     </Form>
