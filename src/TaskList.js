@@ -7,10 +7,22 @@ const DONE = 1;
 const Cards = (props) => {
   const { tasks, doneTask } = props;
 
-  const doneList = tasks.filter((data) => data.status !== DONE);
+  const doneList = tasks
+    .filter((data) => data.status !== DONE)
+    .sort((a, b) => {
+      a = a.due.toString();
+      b = b.due.toString();
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    });
   const cards = doneList.map((data) => {
     return (
-      <Card onClick={() => doneTask(data.no)}>
+      <Card key={data.no} onClick={() => doneTask(data.no)}>
         <DivFlex>
           <Category>{data.category}</Category>
           <Due>Due: {data.due}</Due>

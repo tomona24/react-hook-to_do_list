@@ -5,12 +5,12 @@ const UNDO = 0;
 const DONE = 1;
 
 const initialTask = {
+  no: null,
   title: null,
   detail: null,
   due: null,
   category: null,
   importance: null,
-  level: null,
   status: UNDO,
 };
 
@@ -20,6 +20,9 @@ const FormArea = (props) => {
   const [newTask, setNewTask] = useState(initialTask);
 
   const submitTask = () => {
+    if (!newTask.due) {
+      return;
+    }
     addTaskList(newTask);
     setNewTask(initialTask);
   };
@@ -37,7 +40,7 @@ const FormArea = (props) => {
     <Form>
       <form>
         <FormRow>
-          <label for="category">category: </label>
+          <label for="category">Category : </label>
           <input
             type="text"
             id="category"
@@ -47,7 +50,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="title">Title: </label>
+          <label for="title">Title : </label>
           <input
             type="text"
             id="title"
@@ -57,7 +60,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="detail">Detail: </label>
+          <label for="detail">Detail : </label>
           <input
             type="text"
             id="detail"
@@ -67,7 +70,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="due">Due: </label>
+          <label for="due">Due : </label>
           <input
             type="date"
             id="due"
@@ -77,7 +80,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="importance">Importance: </label>
+          <label for="importance">Importance : </label>
           <Importance>
             low
             <ImportanceVar
@@ -91,7 +94,7 @@ const FormArea = (props) => {
           </Importance>
         </FormRow>
         <FormRow>
-          <input type="submit" value="Submit" onClick={submitTask} />
+          <Submit type="submit" value="Submit" onClick={submitTask} />
         </FormRow>
       </form>
     </Form>
@@ -122,6 +125,15 @@ const Importance = styled.div`
 const ImportanceVar = styled.input`
   width: 200px;
   vertical-align: text-top;
+`;
+
+const Submit = styled.input`
+  padding: 4px 8px;
+  width: 100%;
+  border: 1px solid #CCC;
+  font-size: .8em;
+  font-weight: 800;
+  color: #444;
 `;
 
 export default FormArea;

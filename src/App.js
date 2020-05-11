@@ -9,49 +9,46 @@ const DONE = 1;
 
 function App() {
   const [tasks, setTasks] = useState([
-    // {
-    //   no: 0,
-    //   title: "起きる",
-    //   detail: "がんばろう",
-    //   due: "2020-5-8",
-    //   category: "Routine",
-    //   importance: 88.8,
-    //   level: null,
-    //   status: UNDO,
-    // },
-    // {
-    //   no: 1,
-    //   title: "歯を磨く",
-    //   detail: "毎食後",
-    //   due: "2020-5-15",
-    //   category: "Routine",
-    //   importance: 52.8,
-    //   level: null,
-    //   status: UNDO,
-    // },
-    // {
-    //   no: 2,
-    //   title: "寝る",
-    //   detail: "7時間睡眠！",
-    //   due: "2020-5-10",
-    //   category: "Routine",
-    //   importance: 20.8,
-    //   level: null,
-    //   status: UNDO,
-    // },
-    // {
-    //   no: 3,
-    //   title: "ご飯食べる",
-    //   detail: "一汁三菜",
-    //   due: "2020-5-10",
-    //   category: "Routine",
-    //   importance: 20.8,
-    //   level: null,
-    //   status: DONE,
-    // },
+    {
+      no: 0,
+      title: "起きる",
+      detail: "がんばろう",
+      due: "2020-5-30",
+      category: "Routine",
+      importance: 88.8,
+      status: UNDO,
+    },
+    {
+      no: 1,
+      title: "歯を磨く",
+      detail: "毎食後",
+      due: "2020-5-15",
+      category: "Routine",
+      importance: 52.8,
+      status: UNDO,
+    },
+    {
+      no: 2,
+      title: "寝る",
+      detail: "7時間睡眠！",
+      due: "2020-5-10",
+      category: "Routine",
+      importance: 20.8,
+      status: UNDO,
+    },
+    {
+      no: 3,
+      title: "ご飯食べる",
+      detail: "一汁三菜",
+      due: "2020-5-10",
+      category: "Routine",
+      importance: 20.8,
+      status: DONE,
+    },
   ]);
 
   const addTaskList = (newTask) => {
+    newTask.no = tasks.length;
     setTasks(tasks.concat(newTask));
   };
 
