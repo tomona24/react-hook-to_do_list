@@ -19,7 +19,7 @@ const FormArea = (props) => {
   const { addTaskList } = props;
 
   const submitTask = () => {
-    addTaskList({newTask});
+    addTaskList(newTask);
     setNewTask(initialTask);
   };
 
