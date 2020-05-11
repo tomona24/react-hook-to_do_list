@@ -28,9 +28,10 @@ const Cards = (props) => {
       }
       return 0;
     });
+    
   const cards = doneList.map((data) => {
     return (
-      <Card key={data.no} onClick={() => doneTask(data.no)}>
+      <Card >
         <DivFlex>
           <Category>{data.category}</Category>
           <Due>Due: {data.due}</Due>
