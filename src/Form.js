@@ -8,39 +8,41 @@ const initialTask = {
   title: null,
   detail: null,
   due: null,
-  categoly: null,
+  category: null,
   importance: null,
   level: null,
   status: UNDO,
 };
 
 const FormArea = (props) => {
-  const [newTask, setNewTask] = useState(initialTask);
   const { addTaskList } = props;
+
+  const [newTask, setNewTask] = useState(initialTask);
 
   const submitTask = () => {
     addTaskList(newTask);
     setNewTask(initialTask);
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     let oldTasks = newTask;
     oldTasks[name] = value;
-    setNewTask(oldTasks)
-  }
+    setNewTask(oldTasks);
+  };
 
-  const { categoly, title, detail, due, importance } = newTask;
+  const { category, title, detail, due, importance } = newTask;
+
   return (
     <Form>
       <form>
         <FormRow>
-          <label for="categoly">categoly: </label>
+          <label for="category">category: </label>
           <input
             type="text"
-            id="categoly"
-            name="categoly"
-            value={categoly}
+            id="category"
+            name="category"
+            value={category}
             onChange={handleChange}
           ></input>
         </FormRow>
@@ -76,9 +78,9 @@ const FormArea = (props) => {
         </FormRow>
         <FormRow>
           <label for="importance">Importance: </label>
-          <div>
+          <Importance>
             low
-            <input
+            <ImportanceVar
               type="range"
               id="importance"
               name="importance"
@@ -86,7 +88,7 @@ const FormArea = (props) => {
               onChange={handleChange}
             />
             heigh
-          </div>
+          </Importance>
         </FormRow>
         <FormRow>
           <input type="submit" value="Submit" onClick={submitTask} />
@@ -112,4 +114,55 @@ const FormRow = styled(DivFlexColumn)`
   flex-content: space-between;
 `;
 
+const Importance = styled.div`
+  text-align: center;
+  font-size: 0.9em;
+  margin: 4px 0;
+`;
+const ImportanceVar = styled.input`
+  width: 200px;
+  vertical-align: text-top;
+`;
+
 export default FormArea;
+
+// const [title, setTitle] = useState();
+// const [detail, setDetail] = useState();
+// const [due, setDue] = useState();
+// const [category, setCategory] = useState();
+// const [importance, setImportance] = useState();
+
+// const submitTask = () => {
+//   addTaskList({
+//     'title': title,
+//     'detail': detail,
+//     'due': due,
+//     'category': category,
+//     'importance': importance,
+//     status: UNDO,
+//     level: null,
+//   });
+// };
+
+// const handleChange = event => {
+//   const { name, value } = event.target;
+//   switch (name) {
+//     case "title":
+//       setTitle(value);
+//       break;
+//     case "detail":
+//       setDetail(value);
+//       break;
+//     case "due":
+//       setDue(value);
+//       break;
+//     case "category":
+//       setCategory(value);
+//       break;
+//     case "importance":
+//       setImportance(value);
+//       break;
+//     default:
+//       return;
+//   }
+// }

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import styled from "styled-components";
 
 const UNDO = 0;
@@ -14,7 +12,7 @@ const Cards = (props) => {
     return (
       <Card onClick={() => doneTask(data.no)}>
         <DivFlex>
-          <Category>{data.categoly}</Category>
+          <Category>{data.category}</Category>
           <Due>Due: {data.due}</Due>
         </DivFlex>
 
