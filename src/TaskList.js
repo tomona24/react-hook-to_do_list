@@ -10,23 +10,20 @@ const Cards = (props) => {
   const doneList = tasks
     .filter((data) => data.status !== DONE)
     .sort((a, b) => {
-      a = a.importance.toString();
-      b = b.importance.toString();
-      if (a > b) {
+      const aDue = a.due.toString();
+      const bDue = b.due.toString();
+      const aIm = a.importance.toString();
+      const bIm = b.importance.toString();
+      if (aDue < bDue) {
         return -1;
       }
-      if (a < b) {
+      if (aDue > bDue) {
         return 1;
       }
-      return 0;
-    })
-    .sort((a, b) => {
-      a = a.due.toString();
-      b = b.due.toString();
-      if (a < b) {
+      if (aIm > bIm) {
         return -1;
       }
-      if (a > b) {
+      if (aIm < bIm) {
         return 1;
       }
       return 0;

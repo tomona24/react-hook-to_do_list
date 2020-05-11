@@ -33,7 +33,7 @@ function App() {
       detail: "7時間睡眠！",
       due: "2020-5-15",
       category: "Routine",
-      importance: 20.8,
+      importance: 80.8,
       status: UNDO,
     },
     {
