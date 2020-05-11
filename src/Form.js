@@ -6,11 +6,11 @@ const DONE = 1;
 
 const initialTask = {
   no: null,
-  title: null,
-  detail: null,
-  due: null,
-  category: null,
-  importance: null,
+  title: "",
+  detail: "",
+  due: "",
+  category: "",
+  importance: 50,
   status: UNDO,
 };
 
@@ -20,12 +20,14 @@ const FormArea = (props) => {
   const [newTask, setNewTask] = useState(initialTask);
 
   const submitTask = () => {
-    if (!newTask.due || !newTask.importance || !newTask.title) {
+    if (newTask.due === "" || !newTask.importance  === "" || !newTask.title  === "") {
       return;
     }
     addTaskList(newTask);
     setNewTask(initialTask);
   };
+
+  console.log(newTask);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -94,7 +96,7 @@ const FormArea = (props) => {
           </Importance>
         </FormRow>
         <FormRow>
-          <Submit type="submit" value="Submit" onClick={submitTask} />
+          <Submit type="button" value="Submit" onClick={submitTask} />
         </FormRow>
       </form>
     </Form>

@@ -57,19 +57,30 @@ function App() {
     setTasks(tasks.concat(task));
   };
 
-    const doneTask = (no) => {
+  const doneTask = (no) => {
     const doneList = tasks.map((data) => {
       if (data.no === no) {
-      return {
-        ...data,
-        satus: DONE
+        return {
+          ...data,
+          status: DONE
+        }
       }
-    }
-  return data})
+      return data;
+    });
     setTasks(doneList);
   };
 
-  console.log(tasks)
+
+  // const doneTask = (no) => {
+  //   const doneList = tasks.map((data) => {
+  //     if (data.no === no) {
+  //       data.status = DONE;
+  //     }
+  //     return data;
+  //   });
+  //   setTasks(doneList)
+  // };
+
 
   return (
     <Div>
