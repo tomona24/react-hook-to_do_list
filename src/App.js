@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import FormArea from "./Form";
 import TaskList from "./TaskList";
@@ -47,6 +47,10 @@ function App() {
     },
   ]);
 
+  useEffect(() => {
+    document.title = `Task List for You`;
+  });
+  
   const addTaskList = (newTask) => {
     newTask.no = tasks.length;
     setTasks(tasks.concat(newTask));
