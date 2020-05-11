@@ -28,12 +28,24 @@ const Cards = (props) => {
       }
       return 0;
     });
-    
+
+  const deleteTaskbyEnter = (e) => {
+    if (e.key === "Enter") {
+      const { id } = e.target;
+      doneTask(Number(id));
+    }
+  };
+
   let num = 0;
   const cards = doneList.map((data) => {
     num += 1;
     return (
-      <Card key={data.no} onClick={() => doneTask(data.no)} >
+      <Card
+        tabIndex={0}
+        id={data.no}
+        onClick={() => doneTask(data.no)}
+        onKeyPress={deleteTaskbyEnter}
+      >
         <DivFlex>
           <Category>{data.category}</Category>
           <Due>Due: {data.due}</Due>
