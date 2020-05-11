@@ -31,7 +31,7 @@ function App() {
       no: 2,
       title: "寝る",
       detail: "7時間睡眠！",
-      due: "2020-5-10",
+      due: "2020-5-15",
       category: "Routine",
       importance: 20.8,
       status: UNDO,
