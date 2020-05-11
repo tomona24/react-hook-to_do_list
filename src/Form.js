@@ -20,7 +20,7 @@ const FormArea = (props) => {
   const [newTask, setNewTask] = useState(initialTask);
 
   const submitTask = () => {
-    if (!newTask.due) {
+    if (!newTask.due || !newTask.importance || !newTask.title) {
       return;
     }
     addTaskList(newTask);
@@ -29,9 +29,9 @@ const FormArea = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    let oldTasks = newTask;
-    oldTasks[name] = value;
-    setNewTask(oldTasks);
+    let task = {...newTask}
+    task[name] = value;
+    setNewTask(task);
   };
 
   const { category, title, detail, due, importance } = newTask;

@@ -52,19 +52,24 @@ function App() {
   });
   
   const addTaskList = (newTask) => {
-    newTask.no = tasks.length;
-    setTasks(tasks.concat(newTask));
+    const task = Object.assign({}, newTask)
+    task.no = tasks.length;
+    setTasks(tasks.concat(task));
   };
 
-  const doneTask = (no) => {
+    const doneTask = (no) => {
     const doneList = tasks.map((data) => {
       if (data.no === no) {
-        data.status = DONE;
+      return {
+        ...data,
+        satus: DONE
       }
-      return data;
-    });
+    }
+  return data})
     setTasks(doneList);
   };
+
+  console.log(tasks)
 
   return (
     <Div>
