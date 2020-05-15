@@ -42,7 +42,7 @@ const FormArea = (props) => {
     <Form>
       <form>
         <FormRow>
-          <label for="category">Category : </label>
+          <label htmlFor="category">Category : </label>
           <input
             type="text"
             id="category"
@@ -52,7 +52,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="title">Title : </label>
+          <label htmlFor="title">Title : </label>
           <input
             type="text"
             id="title"
@@ -62,7 +62,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="detail">Detail : </label>
+          <label htmlFor="detail">Detail : </label>
           <input
             type="text"
             id="detail"
@@ -72,7 +72,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="due">Due : </label>
+          <label htmlFor="due">Due : </label>
           <input
             type="date"
             id="due"
@@ -82,7 +82,7 @@ const FormArea = (props) => {
           ></input>
         </FormRow>
         <FormRow>
-          <label for="importance">Importance : </label>
+          <label htmlFor="importance">Importance : </label>
           <Importance>
             low
             <ImportanceVar

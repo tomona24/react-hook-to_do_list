@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 
 const UNDO = 0;
@@ -7,8 +7,8 @@ const DONE = 1;
 const Cards = (props) => {
   const { tasks, doneTask } = props;
 
-  const doneList = tasks
-    .filter((data) => data.status !== DONE)
+  const doneList = useMemo(() => tasks
+    .filter(data => data.status !== DONE)
     .sort((a, b) => {
       const aDue = a.due.toString();
       const bDue = b.due.toString();
@@ -27,7 +27,9 @@ const Cards = (props) => {
         return 1;
       }
       return 0;
-    });
+    }), [tasks]
+    );
+
 
   const deleteTaskbyEnter = (e) => {
     if (e.key === "Enter") {
@@ -36,13 +38,11 @@ const Cards = (props) => {
     }
   };
 
-  let num = 0;
   const cards = doneList.map((data) => {
-    num += 1;
     return (
       <Card
         tabIndex={0}
-        id={data.no}
+        key={data.no}
         onClick={() => doneTask(data.no)}
         onKeyPress={deleteTaskbyEnter}
       >
